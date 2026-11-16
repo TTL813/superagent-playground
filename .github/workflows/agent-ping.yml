@@ -1,0 +1,21 @@
+name: agent-ping
+on:
+  workflow_dispatch:
+    inputs:
+      body:
+        description: comment body
+        required: true
+        default: '@TTL813 please fix the typo in README: "Superagnet" should be "Superagent".'
+permissions:
+  issues: write
+  contents: read
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BODY: ${{ inputs.body }}
+          REPO: ${{ github.repository }}
+        run: gh api -X POST "repos/$REPO/issues/1/comments" -f body="$BODY"
