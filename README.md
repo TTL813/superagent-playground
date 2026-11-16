@@ -2,6 +2,6 @@
 
 Scratch repo for the dsh-superagent prototype.
 
-## Instalation
+## Installation
 
 Run the following to get started.
